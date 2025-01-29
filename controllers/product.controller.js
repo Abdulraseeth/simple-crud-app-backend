@@ -2,8 +2,15 @@ const Product = require("../models/product.model");
 
 const getProducts = async (req, res) => {
   try {
-    const products = await Product.find({});
-      res.status(200).json(products);
+    const { search } = req.query; // Get search query from request
+    let filter = {};
+
+    if (search) {
+      filter.name = { $regex: search, $options: "i" }; // Case-insensitive search
+    }
+
+    const products = await Product.find(filter);
+    res.status(200).json(products);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

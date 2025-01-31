@@ -5,7 +5,12 @@ const productRoute = require("./routes/product.route.js");
 const app = express();
 
 // middleware
-app.use(cors()); // Allow cross-origin requests
+app.use(
+  cors({
+    origin: "https://simple-crud-h35t9vtvz-abdulraseeths-projects.vercel.app/", // Use your actual frontend URL
+    credentials: true, // Allow cookies and authorization headers
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

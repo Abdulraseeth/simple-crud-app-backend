@@ -7,7 +7,7 @@ const app = express();
 // middleware
 app.use(
   cors({
-    origin: "https://simple-crud-h35t9vtvz-abdulraseeths-projects.vercel.app/", // Use your actual frontend URL
+    origin: "https://simple-crud-app-frontend.vercel.app/", // Use your actual frontend URL
     credentials: true, // Allow cookies and authorization headers
   })
 );

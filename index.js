@@ -5,13 +5,6 @@ const productRoute = require("./routes/product.route.js");
 const app = express();
 require("dotenv").config();
 
-// middleware
-// app.use(
-//   cors({
-//     origin: "https://simple-crud-app-frontend.vercel.app/", // Use your actual frontend URL
-//     credentials: true, // Allow cookies and authorization headers
-//   })
-// );
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

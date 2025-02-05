@@ -22,12 +22,18 @@ const ProductSchema = mongoose.Schema(
       type: String,
       required: false,
     },
+
+    category: {
+      type: String,
+      required: [true, "Please enter product category"],
+      enum: ["electronics", "clothing", "furniture", "other"],
+      default: "other",
+    },
   },
   {
     timestamps: true,
   }
 );
-
 
 const Product = mongoose.model("Product", ProductSchema);
 

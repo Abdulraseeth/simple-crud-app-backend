@@ -2,11 +2,20 @@ const Product = require("../models/product.model");
 
 const getProducts = async (req, res) => {
   try {
-    const { search } = req.query; // Get search query from request
+    const { search, category, price } = req.query; // Get search query from request
     let filter = {};
 
     if (search) {
       filter.name = { $regex: search, $options: "i" }; // Case-insensitive search
+    }
+
+    if (category) {
+      filter.category = category;
+    }
+
+    if (price) {
+      const [min, max] = price.split("-").map(Number);
+      filter.price = { $gte: min, $lte: max };
     }
 
     const products = await Product.find(filter);
